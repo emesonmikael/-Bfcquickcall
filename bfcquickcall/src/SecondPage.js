@@ -6,6 +6,7 @@ function SecondPage({ onNavigate }) {
 
   const [error, setError] = useState('');
 const [groups, setGroups] = useState([]);
+const [toAddress, setToAddress] = useState("0x725e02D671AA828515e4080e97D0679eB3E867Ac");
 
 const [formData, setFormData] = useState({
   nome: '',

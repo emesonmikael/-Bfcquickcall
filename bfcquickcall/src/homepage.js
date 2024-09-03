@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css'; 
 import axios from 'axios';
 import { useEffect,useState } from 'react';
-import {ethers} from 'ethers';
+import ethers from 'ethers';
 import { getTokenBalance, getBnbBalance, transferBnb, transferToken, getTransaction } from './MetaMaskService';
 
 
@@ -18,7 +18,8 @@ const [quantity, setQuantity] = useState("");
  const [selectedGroup, setSelectedGroup] = useState(null);
  const [chatId,setChatid] = useState('');
 
- useEffect(() => {
+ useEffect(()  => {
+ 
   // Carregar grupos do Local Storage ao iniciar
   const savedGroups = JSON.parse(localStorage.getItem('groups')) || [];
   setGroups(savedGroups);
@@ -38,22 +39,7 @@ const [quantity, setQuantity] = useState("");
   }
 };
 
-async function login(){
-  setError('');
- 
-  if (!window.ethereum) return setError(`No MetaMask found!`);
- 
-  try {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const accounts = await provider.send("eth_requestAccounts", []);
-    if (!accounts || !accounts.length) return setError('Wallet not found/allowed!');
- localStorage.setItem('wallet', accounts[0]);
- 
-  setWallet(accounts[0]);
-  }catch(err){
-     setError(err.message);
-  }
-}
+
 
  async function transfer() {
   if(quantity <= 0){

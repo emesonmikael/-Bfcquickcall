@@ -1,4 +1,6 @@
-import { ethers } from 'ethers';
+import { ethers , providers} from 'ethers';
+import as from'ethers';
+
 const CONTRACT_ABI = [
     "function name() view returns (string)",
     "function symbol() view returns (string)",
